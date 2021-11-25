@@ -1,0 +1,24 @@
+select * from EMPLOYEES;
+---Execute a failing query (i.e. one which gives an error) to retrieve all employees records whose salary is lower than the average salary.
+select * from  employee where salary < AVG(salary);
+---Execute a working query using a sub-select to retrieve all employees records whose salary is lower than the average salary. 
+select EMP_ID, F_NAME, L_NAME, SALARY 
+from employees 
+where SALARY < (select AVG(SALARY) from EMPLOYEES);
+
+--Execute a failing query (i.e. one which gives an error) to retrieve all employees records with EMP_ID, SALARY and maximum salary as MAX_SALARY in every row.
+ 
+select EMP_ID, SALARY MAX(SALARY) AS MAX SALARY
+from EMPLOYEES;
+----to write it correct
+
+ select EMP_ID, SALARY, ( select MAX(SALARY) from employees ) AS MAX_SALARY
+from employees;
+
+select * from(select EMP_ID, F_NAME, L_NAME, DEP_ID from employees) AS EMP4ALL;
+select * from (select EMP_ID, F_NAME, L_NAME, DEP_ID from employees) ;
+
+SELECT * FROM EMPLOYEES WHERE DEP_ID = 
+
+      ( SELECT MAX(DEPT_ID_DEP) FROM DEPARTMENTS ) 
+;
